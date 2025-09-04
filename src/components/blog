@@ -1,0 +1,243 @@
+import { useState } from 'react';
+import { Calendar, Clock, ArrowRight, Tag, ChevronDown, ChevronUp } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+
+const Blog = () => {
+  const [expandedPost, setExpandedPost] = useState<number | null>(null);
+
+  const blogPosts = [
+    {
+      title: "Mastering Two Pointers: My Journey with LeetCode Problems",
+      excerpt: "Exploring the elegant simplicity of the two-pointer technique through solving 15+ LeetCode problems. From basic array traversal to complex string manipulations...",
+      content: `
+        <p>The two-pointer technique has become one of my favorite problem-solving approaches in competitive programming. Over the past month, I've solved over 15 LeetCode problems using this technique, and I want to share the key insights I've gained.</p>
+        
+        <h3>What Makes Two Pointers Special?</h3>
+        <p>The beauty of the two-pointer technique lies in its simplicity and efficiency. Instead of nested loops that give us O(n²) complexity, we can often solve problems in O(n) time with O(1) space.</p>
+        
+        <h3>My Top 3 Two-Pointer Problem Categories:</h3>
+        <ol>
+          <li><strong>Array Pair Sum Problems</strong> - Finding pairs that sum to a target</li>
+          <li><strong>Palindrome Checking</strong> - Verifying if strings/arrays are palindromes</li>
+          <li><strong>Container Problems</strong> - Like the famous "Container With Most Water"</li>
+        </ol>
+        
+        <p>Each category taught me different aspects of pointer movement and condition checking. The key breakthrough was understanding when to move which pointer and why.</p>
+        
+        <p>I'll be sharing detailed solutions and explanations for each problem in my GitHub repository. Stay tuned for more algorithmic adventures!</p>
+      `,
+      date: "2024-01-15",
+      readTime: "5 min read",
+      tags: ["Algorithms", "LeetCode", "Problem Solving"],
+      category: "Technical"
+    },
+    {
+      title: "Building My First Blockchain DApp: Lessons Learned",
+      excerpt: "From smart contract development to frontend integration, here's everything I learned while building a decentralized voting application...",
+      content: `
+        <p>Building my first decentralized application (DApp) was both exciting and challenging. The project was a blockchain-based voting system that ensures transparency and immutability of votes.</p>
+        
+        <h3>Technical Stack I Used:</h3>
+        <ul>
+          <li>Solidity for smart contracts</li>
+          <li>React for the frontend</li>
+          <li>Web3.js for blockchain interaction</li>
+          <li>IPFS for decentralized storage</li>
+          <li>Ganache for local blockchain testing</li>
+        </ul>
+        
+        <h3>Major Challenges and Solutions:</h3>
+        <p><strong>Gas Optimization:</strong> My initial contract was consuming too much gas. I learned about storage vs memory, batch operations, and efficient data structures.</p>
+        
+        <p><strong>Frontend Integration:</strong> Connecting React with Web3 was tricky. I had to handle wallet connections, transaction confirmations, and error states gracefully.</p>
+        
+        <p><strong>Security Considerations:</strong> Implementing access controls and preventing common vulnerabilities like reentrancy attacks was crucial.</p>
+        
+        <p>This project taught me that blockchain development requires a different mindset - every operation costs gas, immutability is both a feature and a constraint, and user experience needs careful consideration.</p>
+      `,
+      date: "2024-01-08", 
+      readTime: "8 min read",
+      tags: ["Blockchain", "Solidity", "Web3", "DApp"],
+      category: "Technical"
+    },
+    {
+      title: "Teaching DSA: What I Learned as a TA",
+      excerpt: "Reflecting on my experience as a Teaching Assistant for Data Structures and Algorithms, and how it changed my perspective on learning...",
+      content: `
+        <p>Being a Teaching Assistant for the Data Structures and Algorithms course has been one of the most rewarding experiences of my academic journey. Teaching has made me a better programmer and problem solver.</p>
+        
+        <h3>Key Insights from Teaching:</h3>
+        <p><strong>Explanation Forces Understanding:</strong> When you have to explain a concept to someone else, you discover gaps in your own understanding. I've re-learned many concepts while teaching.</p>
+        
+        <p><strong>Different Learning Styles:</strong> Some students learn better with visual diagrams, others need step-by-step code walkthroughs, and some prefer mathematical proofs. Adapting to different learning styles improved my communication skills.</p>
+        
+        <p><strong>Common Pitfalls:</strong> I noticed patterns in student mistakes - off-by-one errors, confusion between pass-by-value and pass-by-reference, and difficulty with recursive thinking.</p>
+        
+        <h3>Teaching Strategies That Worked:</h3>
+        <ul>
+          <li>Using real-world analogies for abstract concepts</li>
+          <li>Live coding sessions with deliberate mistakes</li>
+          <li>Encouraging students to explain their solutions</li>
+          <li>Creating visual representations of data structures</li>
+        </ul>
+        
+        <p>Teaching has made me more patient, empathetic, and articulate. It's also reinforced my own understanding of fundamental concepts. I highly recommend the experience to any fellow students!</p>
+      `,
+      date: "2024-01-01",
+      readTime: "6 min read", 
+      tags: ["Teaching", "DSA", "Education", "Reflection"],
+      category: "Personal"
+    },
+    {
+      title: "Weekend in Coorg: A Much-Needed Break from Code",
+      excerpt: "Sometimes the best debugging happens away from the computer. My recent trip to Coorg reminded me of the importance of work-life balance...",
+      content: `
+        <p>Last weekend, I traded my laptop for hiking boots and ventured into the misty hills of Coorg. As someone who spends most of their time debugging code and solving algorithms, this trip was a much-needed reminder of life beyond screens.</p>
+        
+        <h3>Why I Needed This Break:</h3>
+        <p>I had been working intensively on my blockchain project for weeks, and I was hitting a creative wall. The code was becoming messy, bugs were multiplying, and I was losing perspective on the bigger picture.</p>
+        
+        <h3>What Coorg Taught Me:</h3>
+        <p><strong>Perspective Matters:</strong> Just like stepping back from code helps you see architectural issues, stepping back from work helps you see life more clearly.</p>
+        
+        <p><strong>Nature's Algorithms:</strong> Walking through coffee plantations, I was amazed by nature's own optimization algorithms - how trees arrange their branches for maximum sunlight, how water finds the most efficient path downhill.</p>
+        
+        <p><strong>Digital Detox Benefits:</strong> Three days without constant notifications helped me realize how fragmented my attention had become. I returned with renewed focus and creativity.</p>
+        
+        <h3>Back to Code, Refreshed:</h3>
+        <p>When I returned to my project, I immediately spotted the architectural flaw that had been eluding me for days. Sometimes the best debugging happens when you're not debugging at all.</p>
+        
+        <p>I'm planning to make these breaks a regular part of my routine. The mountains will always be there when the code gets too complex!</p>
+      `,
+      date: "2023-12-25",
+      readTime: "4 min read",
+      tags: ["Travel", "Work-Life Balance", "Reflection", "Coorg"],
+      category: "Personal"
+    }
+  ];
+
+  const toggleExpanded = (index: number) => {
+    setExpandedPost(expandedPost === index ? null : index);
+  };
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  };
+
+  return (
+    <section id="blog" className="py-20 bg-muted/30">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">
+            Blog & Reflections
+          </h2>
+          
+          <p className="text-center text-muted-foreground mb-12 text-lg">
+            Sharing my journey through code, learning experiences, and life as a CS student.
+          </p>
+
+          <div className="space-y-8">
+            {blogPosts.map((post, index) => (
+              <Card 
+                key={index}
+                className="shadow-card hover:shadow-card-hover transition-smooth border-0 bg-card"
+              >
+                <CardHeader>
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <Badge 
+                      variant="secondary"
+                      className={`${post.category === 'Technical' 
+                        ? 'bg-primary/10 text-primary' 
+                        : 'bg-accent/10 text-accent'
+                      } border-0`}
+                    >
+                      {post.category}
+                    </Badge>
+                    {post.tags.map((tag, tagIndex) => (
+                      <Badge 
+                        key={tagIndex}
+                        variant="outline"
+                        className="text-xs border-border/50"
+                      >
+                        <Tag className="w-3 h-3 mr-1" />
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                  
+                  <CardTitle className="text-xl text-foreground hover:text-primary transition-smooth cursor-pointer">
+                    {post.title}
+                  </CardTitle>
+                  
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      <span>{formatDate(post.date)}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+                </CardHeader>
+
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    {post.excerpt}
+                  </p>
+
+                  {expandedPost === index && (
+                    <div 
+                      className="prose prose-sm max-w-none text-muted-foreground mb-6 animate-fade-in"
+                      dangerouslySetInnerHTML={{ __html: post.content }}
+                    />
+                  )}
+
+                  <Button
+                    variant="ghost"
+                    onClick={() => toggleExpanded(index)}
+                    className="p-0 h-auto font-medium text-primary hover:text-primary/80 hover:bg-transparent"
+                  >
+                    {expandedPost === index ? (
+                      <>
+                        <span>Read Less</span>
+                        <ChevronUp className="w-4 h-4 ml-1" />
+                      </>
+                    ) : (
+                      <>
+                        <span>Read More</span>
+                        <ChevronDown className="w-4 h-4 ml-1" />
+                      </>
+                    )}
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-muted-foreground mb-6">
+              Want to read more? I regularly share my thoughts and experiences.
+            </p>
+            <Button 
+              variant="outline"
+              className="border-primary/20 hover:bg-primary hover:text-primary-foreground transition-smooth"
+            >
+              Subscribe to Updates
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Blog;
