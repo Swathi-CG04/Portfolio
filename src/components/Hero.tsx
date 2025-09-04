@@ -52,7 +52,7 @@ const Hero = () => {
                 className="bg-white text-primary hover:bg-white/90 transition-smooth shadow-card-hover font-semibold px-8"
                 asChild
               >
-              <a href="/Swathi_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/Swathi_resume.pdf" target="_blank" rel="noopener noreferrer">
               <Download className="mr-2 h-5 w-5" />
                 View Resume
               </a>
